@@ -68,11 +68,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
-    marginTop:30
+    marginTop:40
   },
   heading: {
     backgroundColor:"#0AD6A0",
-    margin:20,
+    margin:10,
     color: "#ffffff",
     textAlign:"center",
     fontSize:20,
@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
     justifyContent:'flex-end',
     width:"100%",
     flexDirection:'row',
-    margin:10
   },
   removeAlltext:{
     fontSize:17,
@@ -99,9 +98,13 @@ const styles = StyleSheet.create({
     marginRight:15
   },
   writeTaskWrapper:{
-    flex:0,
     flexDirection:'row',
     justifyContent:"space-between",
+    margin:10,
+    padding:10,
+    fontSize:20,
+    borderRadius:10,
+    backgroundColor:"#EDEADE"
   }, 
   
 });
