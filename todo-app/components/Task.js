@@ -1,21 +1,23 @@
 import React from "react";
 import { Keyboard, View,StyleSheet,ScrollView,Text } from "react-native";
+import { nanoid } from 'nanoid/non-secure';
 import { useState } from "react";
 import TaskList from "./TaskList";
 import AddTask from "./AddTask";
 
 const Task =()=>{
+    const [task,setTask] = useState("");
     const [taskItems,setTaskItems] = useState([]);
-
     const handleAddTask =(task)=>{
         Keyboard.dismiss();
         setTaskItems([...taskItems,
         {
-            id: taskItems.length + Date.now(),
+            id: nanoid(),
             title: task,
             status:false
         }
         ]);
+        setTask("");
     }
     const handleToggle =(id)=>{
         const updatedItems = taskItems.map((item)=>
@@ -56,7 +58,7 @@ const Task =()=>{
             />
         </View>
       </ScrollView>
-      <AddTask handleAddTask={handleAddTask} />
+      <AddTask task={task} setTask={setTask} handleAddTask={handleAddTask} />
       </View>
     )
 }
@@ -65,10 +67,10 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       justifyContent: 'center',
-      marginTop:40
+      marginTop:50
     },
     heading: {
-        backgroundColor:"teal",
+        backgroundColor:"#006400",
         margin:10,
         color: "#ffffff",
         textAlign:"center",

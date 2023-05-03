@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { 
     KeyboardAvoidingView,
     TextInput,
@@ -8,9 +7,7 @@ import {
     StyleSheet
     } from "react-native";
 
-const AddTask = ({handleAddTask})=>{
-    const [task,setTask] = useState("");
-
+const AddTask = ({handleAddTask,task,setTask})=>{
     return(
         <KeyboardAvoidingView style={styles.writeTaskWrapper}>
         <TextInput 

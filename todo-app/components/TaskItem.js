@@ -10,13 +10,13 @@ const TaskItem = ({ id, title, status, handleToggle, handleDelete }) =>{
                 <Text style={styles.status}>{status? "completed" :"uncomplete"}</Text>
             </View>
             <View style={styles.handleDiv}>
-                <TouchableOpacity key={id} onPress={()=>handleToggle(id)}>
-                    <Image source={require("../images/add.png")} 
-                     style={{width:25,height:25}}/>
-                </TouchableOpacity>
+                <Switch value={status}
+                     thumbColor={status ? '#006400' : '#f4f3f4'}
+                     onValueChange={()=>handleToggle(id)}
+                 />
                 <TouchableOpacity key={id} onPress={()=>handleDelete(id)}>
                   <Image source={require("../images/delete.png")}
-                    style={{width:25,height:25}} />
+                    style={{width:25,height:25,marginTop:12}} />
                 </TouchableOpacity>
             </View>
         </TouchableOpacity>
@@ -25,7 +25,7 @@ const TaskItem = ({ id, title, status, handleToggle, handleDelete }) =>{
 }
 const styles = StyleSheet.create({
     item:{
-        padding:15
+        padding:10
     },
     itemText:{
         fontSize:18
