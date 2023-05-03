@@ -1,19 +1,90 @@
 import React from "react";
-import {View, Text, StyleSheet} from "react-native";
+import { Keyboard, View,StyleSheet,ScrollView,Text } from "react-native";
+import { useState } from "react";
+import TaskList from "./TaskList";
+import AddTask from "./AddTask";
 
-const Task = (props) =>{
- return(
-    <View style={styles.item}>
-        <Text style={styles.itemText}>{props.task}</Text>
-    </View>
- )
+const Task =()=>{
+    const [taskItems,setTaskItems] = useState([]);
+
+    const handleAddTask =(task)=>{
+        Keyboard.dismiss();
+        setTaskItems([...taskItems,
+        {
+            id: taskItems.length + Date.now(),
+            title: task,
+            status:false
+        }
+        ]);
+    }
+    const handleToggle =(id)=>{
+        const updatedItems = taskItems.map((item)=>
+            item.id === id ?
+            {
+                ...item,
+                status: !item.status
+            }
+            : item
+        );
+        setTaskItems(updatedItems);
+    }
+
+    const handleDelete =(id)=>{
+      const updatedItems = taskItems.filter((item)=> item.id !== id);
+      setTaskItems(updatedItems);
+    }
+
+    return(
+        <View style={styles.container}>
+        <ScrollView contentContainerStyle={{flexGrow:1,}}>
+        <Text style={styles.heading}>
+          My Todo App
+        </Text>
+        <View>
+            <TaskList 
+            data={taskItems.filter((item)=> !item.status)} 
+            handleToggle={handleToggle}
+            handleDelete={handleDelete}
+            />
+        </View>
+        <View>
+            {taskItems && <Text style={styles.completeHeading}>Completed Task</Text>}
+            <TaskList 
+            data={taskItems.filter((item)=> item.status)} 
+            handleToggle={handleToggle}
+            handleDelete={handleDelete}
+            />
+        </View>
+      </ScrollView>
+      <AddTask handleAddTask={handleAddTask} />
+      </View>
+    )
 }
 const styles = StyleSheet.create({
-    item:{
-        padding:15
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      justifyContent: 'center',
+      marginTop:40
     },
-    itemText:{
-        fontSize:18
+    heading: {
+        backgroundColor:"teal",
+        margin:10,
+        color: "#ffffff",
+        textAlign:"center",
+        fontSize:20,
+        padding:10,
+        fontWeight:'700',
+        borderRadius:5
+      },
+    completeHeading:{
+        margin:10,
+        textAlign:"center",
+        fontSize:18,
+        padding:10,
+        fontWeight:'700',
+       
     }
 })
+
 export default Task;
