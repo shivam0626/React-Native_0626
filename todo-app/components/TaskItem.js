@@ -25,7 +25,9 @@ const TaskItem = ({ id, title, status, handleToggle, handleDelete }) =>{
 }
 const styles = StyleSheet.create({
     item:{
-        padding:10
+        paddingTop:7,
+        paddingLeft:10,
+        paddingRight:10
     },
     itemText:{
         fontSize:18
