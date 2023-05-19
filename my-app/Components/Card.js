@@ -6,13 +6,15 @@ const Card = ({name,email}) => {
   return (
     <TouchableOpacity onPress={()=>setOpen(!isopen)}>
         <View style={styles.container}>
-        <Text style={styles.text}>
-            {name}
-        </Text>
-        {isopen &&  <Text style={styles.text}>
-            {email}
-        </Text>}
-    </View>
+            <Text style={styles.text}>
+                {name}
+            </Text>
+        </View>
+        {isopen && <View style={styles.container}>
+            <Text style={styles.email}>
+                {email}
+            </Text>
+        </View>}
     </TouchableOpacity>
     
   )
@@ -22,10 +24,16 @@ const styles = StyleSheet.create({
         height:60,
         backgroundColor:"#cecece",
         justifyContent:"center",
-        padding:10
+        paddingLeft:20
     },
     text:{
         fontWeight:"bold"
+    },
+    email:{ 
+        height:32,
+        paddingLeft:20,
+        backgroundColor:"#cecece",
+        justifyContent:"center",
     }
 })
 
