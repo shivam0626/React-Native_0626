@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import { useEffect, useState } from 'react';
 import Card from './Components/Card';
 import axios from 'axios';
+import AddUser from './Components/AddUser';
 
 export default function App() {
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header title="My First App" />
+      <AddUser />
       <View>
         <FlatList 
           data={data}
