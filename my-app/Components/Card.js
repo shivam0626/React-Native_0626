@@ -7,7 +7,7 @@ const Card = ({first_name,email,last_name,avatar}) => {
     <TouchableOpacity onPress={()=>setOpen(!isopen)}>
         <View style={styles.container}>
             <Text style={styles.text}>
-                {first_name} {last_name}
+                {first_name}
             </Text>
         </View>
         {isopen && <View style={styles.container}>

@@ -8,18 +8,8 @@ import AddUser from './Components/AddUser';
 
 export default function App() {
   const [loading, setLoading] = useState(false);
-  const [data,setData] = useState([
-    {
-      id:1,
-      name:"John",
-      email:"john@masaischool.com"
-    },
-    {
-      id:2,
-      name:"Jane",
-      email:"jane@masaischool.com"
-    }
-  ]);
+  const [data,setData] = useState([]);
+
   const fetchUsers = ()=>{
     setLoading(true);
     return axios.get("https://reqres.in/api/users")
@@ -36,10 +26,23 @@ export default function App() {
     fetchUsers();
   },[])
 
+  const handleAdd =(text)=>{
+      /** POST REQUEST */
+
+      const payload={
+        id:data.length+1,
+        first_name: text,
+        email:`${text}@masaischool.com`,
+        last_name:text
+      }
+      setData([...data,
+        payload])
+  }
+
   return (
     <View style={styles.container}>
       <Header title="My First App" />
-      <AddUser />
+      <AddUser onSubmit={handleAdd} />
       <View>
         <FlatList 
           data={data}
