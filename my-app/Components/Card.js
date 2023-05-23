@@ -9,27 +9,27 @@ const Card = ({first_name,email,last_name,avatar}) => {
             <Text style={styles.text}>
                 {first_name}
             </Text>
+            {isopen && <View style={styles.email}>
+                <Text style={styles.text}>
+                    {email}
+                </Text>
+            </View>}
         </View>
-        {isopen && <View style={styles.container}>
-            <Text style={styles.email}>
-                {email}
-            </Text>
-        </View>}
     </TouchableOpacity>
     
   )
 }
 const styles = StyleSheet.create({
     container:{
-        height:60,
+        height:120,
         backgroundColor:"#cecece",
         justifyContent:"center",
-        paddingLeft:20,
+        padding:10,
         borderBottomWidth:1,
-       borderColor:"green"
+        borderColor:"green",
     },
     text:{
-        fontWeight:"bold"
+        fontWeight:"bold",
     },
     email:{ 
         height:32,

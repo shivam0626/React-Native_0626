@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet,  View ,ScrollView} from 'react-native';
 import Header from './Components/Header';
 import { useEffect, useState } from 'react';
 import Card from './Components/Card';
@@ -40,7 +39,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header title="My First App" />
       <AddUser onSubmit={handleAdd} />
       <View>
@@ -50,7 +49,7 @@ export default function App() {
           renderItem={({item})=> <Card{...item}/>}
          />
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -58,6 +57,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fdf',
-    paddingTop:50
+    paddingTop:50,
   },
 });
