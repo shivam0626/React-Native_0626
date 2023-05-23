@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native'
+import { TouchableOpacity, StyleSheet, Text, View, Image } from 'react-native'
 
 const Card = ({first_name,email,last_name,avatar}) => {
     const [isopen,setOpen] = useState(false);
   return (
     <TouchableOpacity onPress={()=>setOpen(!isopen)}>
         <View style={styles.container}>
-            <Text style={styles.text}>
-                {first_name}
-            </Text>
+                <Image source={{uri:avatar}} style={styles.image} />
+                <Text style={styles.text}>
+                    {first_name}
+                </Text>
             {isopen && <View style={styles.email}>
                 <Text style={styles.text}>
                     {email}
@@ -36,7 +37,13 @@ const styles = StyleSheet.create({
         paddingLeft:20,
         backgroundColor:"#cecece",
         justifyContent:"center",
-    }
+    },
+    image:{
+       height:50,
+       width:50,
+       borderRadius:25
+    },
+
 })
 
 export default Card;
